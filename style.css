@@ -39,6 +39,10 @@ button {
     margin-top: 20px;
 }
 
+#load {
+    display: none;
+}
+
 #location {
     font-size: 24px;
     font-weight: bold;
