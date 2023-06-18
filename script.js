@@ -10,17 +10,18 @@ const temp = document.querySelector('#temp');
 const feels = document.querySelector('#feelsLike');
 const hum = document.querySelector('#humidity');
 const clouds = document.querySelector('#clouds');
+
+const defaultUrl = 'https://api.weatherapi.com/v1/current.json?key=7ff95b83f9ee4132b0044357231706&q=kolkata';
 const url = 'https://api.weatherapi.com/v1/current.json?key=7ff95b83f9ee4132b0044357231706';
 
 const img = document.createElement('img');
 
-
-async function getWeatherData() {
+async function getWeatherData(url) {
     try {
         info.style.display = 'none';
         load.style.display = 'block';
         
-        let response = await fetch(url + `&q=${input.value}`, {mode: 'cors'});
+        let response = await fetch(url, {mode: 'cors'});
         let weatherData = await response.json();
         await displayData(weatherData);
 
@@ -34,8 +35,10 @@ async function getWeatherData() {
     }
 }
 
+getWeatherData(defaultUrl);
+
 btn.addEventListener('click', () => {
-    getWeatherData();
+    getWeatherData(url + `&q=${input.value}`);
 });
 
 async function displayData(weatherData) {
@@ -44,7 +47,7 @@ async function displayData(weatherData) {
     cond.textContent = weatherData.current.condition.text;
     img.src = weatherData.current.condition.icon;
     icon.appendChild(img);
-    temp.textContent = "Temperature: " + weatherData.current.temp_c + ' °C';
+    temp.textContent = weatherData.current.temp_c + ' °C';
     feels.textContent = "Feels Like: " + weatherData.current.feelslike_c + ' °C';
     hum.textContent = "Humidity: " + weatherData.current.humidity;
     clouds.textContent = "Clouds: " + weatherData.current.cloud;
