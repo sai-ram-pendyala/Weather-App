@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Weather Forecast</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <input type="text">
-    <button>
-        <img src="search.png">
-    </button>
+    <h1>Weather Forecast</h1>
+    <div id="form">
+        <input type="text">
+        <button>
+            <img id="search" src="search.png">
+        </button>
+    </div>     
     <div id="info">
         <div id="location"></div>
         <div id="dateTime"></div>
         <div id="condition"></div>
-        <div id="icon"><img src="#"></div>
+        <div id="icon"></div>
         <div id="temp"></div>
         <div id="feelsLike"></div>
         <div id="humidity"></div>
